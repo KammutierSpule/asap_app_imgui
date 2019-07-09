@@ -70,7 +70,11 @@ bool ApplicationBase::Draw() {
         ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoDocking;
     if (opt_fullscreen) {
       auto dockSpaceSize = viewport->Size;
-      dockSpaceSize.y -= 16.0f;  // remove the status bar
+
+      if (show_statusbar_) {
+        dockSpaceSize.y -= menu_height;  // remove the status bar
+      }
+
       ImGui::SetNextWindowPos(viewport->Pos);
       ImGui::SetNextWindowSize(dockSpaceSize);
       ImGui::SetNextWindowViewport(viewport->ID);
@@ -104,10 +108,12 @@ bool ApplicationBase::Draw() {
       // TODO: emit a log message
     }
 
-	//
-	// Status bar
-	//
-    DrawStatusBar(viewport->Size.x, 16.0f, 0.0f, viewport->Size.y - menu_height);
+    //
+    // Status bar
+    //
+    if (show_statusbar_) {
+        DrawStatusBar(viewport->Size.x, menu_height, 0.0f, viewport->Size.y - menu_height);
+    }
 
     if (show_logs_) DrawLogView();
     if (show_settings_) DrawSettings();
