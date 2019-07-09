@@ -28,6 +28,17 @@ message(STATUS "Program ${target}")
 
 
 # ------------------------------------------------------------------------------
+# Build options
+# ------------------------------------------------------------------------------
+option(WITH_THEME_USE_LOAD_SAVE "Use Theme Load and Save" ON)
+
+if(WITH_THEME_USE_LOAD_SAVE)
+  add_definitions(-DTHEME_USE_LOAD_SAVE=1)
+else()
+  add_definitions(-DTHEME_USE_LOAD_SAVE=0)
+endif()
+
+# ------------------------------------------------------------------------------
 # Sources
 # ------------------------------------------------------------------------------
 
@@ -38,6 +49,7 @@ list(APPEND headers
   src/ui/fonts/fonts.h
   src/ui/fonts/material_design_icons.h
   src/ui/style/theme.h
+  src/ui/style/font.h
   src/ui/log/sink.h
   src/ui/application_base.h
   src/runner_base.h
@@ -75,6 +87,8 @@ set(sources
   src/config.cpp
   src/ui/application_base.cpp
   src/ui/style/theme.cpp
+  src/ui/style/font.cpp
+  src/ui/style/load_default_style.cpp
   #
   src/main.cpp
   ${headers}
