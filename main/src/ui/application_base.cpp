@@ -16,6 +16,7 @@
 #include <ui/fonts/material_design_icons.h>
 #include <ui/log/sink.h>
 #include <ui/style/theme.h>
+#include <ui/style/font.h>
 
 namespace asap {
 namespace ui {
@@ -52,7 +53,10 @@ void ApplicationBase::ShutDown() {
   //  - Theme settings
   //  - Docks
   sink_->SaveSettings();
+
+#if (THEME_USE_LOAD_SAVE)
   Theme::SaveStyle();
+#endif
 }
 
 bool ApplicationBase::Draw() {
@@ -455,7 +459,13 @@ void ShowStyleSettings() {
   static bool reset_to_current = false;
   if (reset_to_current) {
     reset_to_current = false;
+
+#if (THEME_USE_LOAD_SAVE)
     Theme::LoadStyle();
+#else
+    Theme::LoadDefaultStyle();
+#endif
+
   }
   // Toolbar
   {

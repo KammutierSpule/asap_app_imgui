@@ -20,7 +20,7 @@ __pragma(warning(push)) __pragma(warning(disable : 4127))
 
 #include <ui/fonts/material_design_icons.h>
 #include <ui/log/sink.h>
-#include <ui/style/theme.h>
+#include <ui/style/font.h>
 
 #include <common/assert.h>
 #include <common/logging.h>
