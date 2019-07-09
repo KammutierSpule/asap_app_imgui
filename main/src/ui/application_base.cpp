@@ -200,9 +200,11 @@ void ApplicationBase::DrawStatusBar(float width, float height, float pos_x,
   ImGui::SetNextWindowSize(ImVec2(width, height), ImGuiSetCond_Always);
   ImGui::SetNextWindowPos(ImVec2(pos_x, pos_y), ImGuiSetCond_Always);
   ImGui::Begin("statusbar", nullptr,
+               ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse |
+               ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse |
                ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoSavedSettings |
-                   ImGuiWindowFlags_NoBringToFrontOnFocus |
-                   ImGuiWindowFlags_NoResize);
+               ImGuiWindowFlags_NoBringToFrontOnFocus |
+               ImGuiWindowFlags_NoResize);
 
   // Call the derived class to add stuff to the status bar
   DrawInsideStatusBar(width - 45.0f, height);
