@@ -3,57 +3,69 @@
      * with overline, for chapters
      = for sections
      - for subsections
-     ^ for sub-subsections
+     ^ for subsubsections
      " for paragraphs
 
-#########################################
-ASAP ImGui Starter Project documentation!
-#########################################
-
-.. |date| date::
-
-Last Updated on |date|
+*******************
+ASAP documentation!
+*******************
 
 .. toctree::
    :maxdepth: 2
-   :titlesonly:
    :hidden:
 
-   tools/index
-   license
-   changelog.md
-   version
+   Usage <usage>
+   Build <build>
+   Development <devflow>
+   Modules <modules>
+   License <license>
+   Version <version>
 
-Welcome! This is the documentation for the
-`asap_app_imgui <https://github.com/abdes/asap_app_imgui>`_ |version|
-project.
+Welcome! This is the documentation for the *asap* project. This is the top level
+container project for the asap modules. It provides the integrated build system
+and the overall structure for projects following the asap development workflow.
 
-This is a CMake build container for ImGui and the application using it. It
-uses the `asap <https://github.com/abdes/asap>`_ integrated build system and
-follows its development workflow.
+The main goal from this family of modules and projects is to significantly cut
+the bootstrap time of starting a new c++ application, using CMake as the build
+system.
 
 Parts of the documentation
 ==========================
 
-`Developer Guides <https://abdes.github.io/asap/asap_master/html/project-development/index.html>`_
---------------------------------------------------------------------------------------------------
-  *head over to the `asap` project documentation for detailed guides on how to
-  build and maintain the different targets in this project.*
+:doc:`Using in your project <usage>`
+------------------------------------
+*start here to understand how to use this project as a starter for your own
+project*
 
-:doc:`Project Tools <tools/index>`
-----------------------------------
-  *get an introduction to the programs and scripts under the `tools` folder,
-  specifically made for the `asap` project. These can simplify recurring tasks and
-  provide additional insights into the project, and sometimes examples of how to
-  use the project artifacts.*
+:doc:`Building this project <build>`
+------------------------------------
+*start here to understand how to add this module to your own asap based
+project*
 
-Acknowledgements
+:doc:`Development workflow <devflow>`
+-------------------------------------
+*refer to this part of the documentation to understand the build system
+specifics for this project, the development workflow, coding and unit testing
+guidelines*
+
+:doc:`Modules <modules>`
+------------------------
+*check this out to explore the different modules part of this project. From
+there, you can also jump to the detailed API documentation of each of those
+modules.*
+
+Recipes and HOWTOs (TODO)
+-------------------------
+*in-depth documents on specific topics related to the usage of the asap starter
+project*
+
+Indices and tables
+==================
+
+  | :ref:`genindex`
+  | :ref:`search`
+
+Meta information
 ================
 
-.. figure:: https://executablebooks.org/en/latest/_static/logo-wide.svg
-  :figclass: margin
-  :alt: Executable Books Project
-  :name: executable_book_logo
-
-This documentation uses the theme provided by the `Executable Books Project
-<https://executablebooks.org/>`_ Project.
+  | :doc:`License <license>`

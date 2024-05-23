@@ -1,54 +1,48 @@
-/*     SPDX-License-Identifier: BSD-3-Clause     */
-
-//        Copyright The Authors 2021.
+//    Copyright The Authors 2018.
 //    Distributed under the 3-Clause BSD License.
 //    (See accompanying file LICENSE or copy at
 //   https://opensource.org/licenses/BSD-3-Clause)
 
 #pragma once
 
-#include <shared_mutex> // for locking the records vector
-#include <vector>       // for the records vector
+#include <shared_mutex>  // for locking the records vector
+#include <vector>        // for the records vector
 
 #include <spdlog/sinks/sink.h>
 #include <spdlog/spdlog.h>
 
+#include <common/logging.h>
 #include <imgui/imgui.h>
-#include <logging/logging.h>
 
-namespace asap::ui {
+namespace asap {
+namespace ui {
 
 class ImGuiLogSink : public spdlog::sinks::base_sink<std::mutex>,
                      asap::logging::Loggable<ImGuiLogSink> {
-public:
+ public:
   void Clear();
 
-  static void ShowLogLevelsPopup();
+  void ShowLogLevelsPopup();
 
   void ShowLogFormatPopup();
 
-  void ToggleWrap() {
-    wrap_ = !wrap_;
-  }
+  void ToggleWrap() { wrap_ = !wrap_; }
 
-  void ToggleScrollLock() {
-    scroll_lock_ = !scroll_lock_;
-  }
+  void ToggleScrollLock() { scroll_lock_ = !scroll_lock_; }
 
-  // TODO(Abdessattar) refactor this ugly interface to not use pointer for open
   void Draw(const char *title = nullptr, bool *p_open = nullptr);
 
   void LoadSettings();
   void SaveSettings();
 
-  static const char *const LOGGER_NAME;
+  static const char * LOGGER_NAME;
 
-protected:
+ protected:
   void sink_it_(const spdlog::details::log_msg &msg) override;
 
   void flush_() override;
 
-private:
+ private:
   static const ImVec4 COLOR_WARN;
   static const ImVec4 COLOR_ERROR;
 
@@ -78,4 +72,5 @@ private:
   //@}
 };
 
-} // namespace asap::ui
+}  // namespace ui
+}  // namespace asap
